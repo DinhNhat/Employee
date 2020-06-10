@@ -22,4 +22,16 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     List<Employee> findByHireDateGreaterThan(@Param("hireDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date hireDate);
 
+    List<Employee> findByBirthDateOrHireDateLessThan(@Param("birthDate")
+                                                     @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthDate,
+                                                     @Param("hireDate")
+                                                     @DateTimeFormat(pattern = "yyyy-MM-dd") Date hireDate);
+
+    /**
+     * Wildcard search, beawre that the like string
+     * might contain symbole '%' which should be converted into ASCII code URL
+     * for example: space = %20, % = %25
+     */
+    List<Employee> findByLastNameLike(@Param("lastName") String lastName);
+
 }
