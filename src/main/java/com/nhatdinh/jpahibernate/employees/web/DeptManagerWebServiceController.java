@@ -23,8 +23,8 @@ public class DeptManagerWebServiceController {
         this.deptManagerRepository = deptManagerRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/byFromDate")
-    public List<DeptManager> searchByFromDate(@RequestBody @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromDate) {
-        return this.deptManagerRepository.findByFromDate(fromDate);
-    }
+//    @RequestMapping(method = RequestMethod.GET, path = "/byFromDate")
+//    public List<DeptManager> searchByFromDate(@RequestBody @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromDate) {
+//        return this.deptManagerRepository.findByFromDate(fromDate);
+//    }
 }

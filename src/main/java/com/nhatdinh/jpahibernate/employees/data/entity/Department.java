@@ -1,6 +1,7 @@
 package com.nhatdinh.jpahibernate.employees.data.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -11,6 +12,11 @@ public class Department {
     private String code;
     @Column(name = "dept_name")
     private String name;
+
+    @OneToMany(mappedBy = "department",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DeptManager> deptManagers;
 
     // must implement a constructor with no-param
     protected Department() {};

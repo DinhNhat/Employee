@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "dept_manager")
-public class DeptManager implements Serializable {
+public class DeptManager {
     @EmbeddedId
     private DeptManagerPk pk;
 
@@ -38,22 +38,20 @@ public class DeptManager implements Serializable {
     public String toString() {
         return "DeptManager{" +
                 "pk=" + pk +
-                ", employee=" + employee +
-                ", department=" + department +
                 ", fromDate=" + fromDate +
                 ", toDate=" + toDate +
                 '}';
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
+    //    @Override
+//    public int hashCode() {
+//        return super.hashCode();
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        return super.equals(obj);
+//    }
 
     public DeptManagerPk getPk() {
         return pk;

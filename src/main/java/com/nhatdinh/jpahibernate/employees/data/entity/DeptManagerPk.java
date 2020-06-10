@@ -18,13 +18,13 @@ public class DeptManagerPk implements Serializable {
         this.deptNo = deptNo;
     }
 
-    @Override
-    public String toString() {
-        return "DeptManagerPk{" +
-                "empNo=" + empNo +
-                ", deptNo='" + deptNo + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "DeptManagerPk{" +
+//                "empNo=" + empNo +
+//                ", deptNo='" + deptNo + '\'' +
+//                '}';
+//    }
 
     @Override
     public int hashCode() {

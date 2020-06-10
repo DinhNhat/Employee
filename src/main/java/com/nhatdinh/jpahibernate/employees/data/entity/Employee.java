@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -25,6 +26,16 @@ public class Employee {
 //    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hireDate;
+
+    @OneToMany(mappedBy = "employee",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<Salary> salaries;
+
+    @OneToMany(mappedBy = "employee",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<DeptManager> deptManagers;
 
     protected Employee() {};
 

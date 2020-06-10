@@ -1,15 +1,18 @@
 package com.nhatdinh.jpahibernate.employees.data.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Date;
 
-// Create Composite PK key with annotation @IdClass
+@Embeddable
 public class SalaryPk implements Serializable {
-    private Integer empNo;
-    private Date fromDate;
+    @Column(name = "emp_no")
+    protected Integer empNo;
+    @Column(name = "from_date")
+    protected Date fromDate;
 
     // default constructor
-
     protected SalaryPk() {};
 
     public SalaryPk(Integer empNo, Date fromDate) {

@@ -3,17 +3,20 @@ package com.nhatdinh.jpahibernate.employees.data.entity;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Using IdClass annotation in composite key
+ */
 @Entity
 @Table(name = "salaries")
-@IdClass(SalaryPk.class)
 public class Salary {
-    @Id
-    @Column(name = "emp_no")
-    private Integer empNo;
 
-    @Id
-    @Column(name = "from_date")
-    private Date fromDate;
+    @EmbeddedId
+    private SalaryPk pk;
+
+    @ManyToOne
+    @MapsId("emp_no")
+    @JoinColumn(name = "emp_no")
+    private Employee employee;
 
     @Column(name = "salary")
     private Integer salary;
@@ -22,9 +25,8 @@ public class Salary {
 
     public Salary() {};
 
-    public Salary(Integer empNo, Date fromDate, Integer salary, Date toDate) {
-        this.empNo = empNo;
-        this.fromDate = fromDate;
+    public Salary(SalaryPk pk, Integer salary, Date toDate) {
+        this.pk = pk;
         this.salary = salary;
         this.toDate = toDate;
     }
@@ -32,27 +34,18 @@ public class Salary {
     @Override
     public String toString() {
         return "Salary{" +
-                "empNo=" + empNo +
-                ", fromDate=" + fromDate +
+                "pk=" + pk +
                 ", salary=" + salary +
                 ", toDate=" + toDate +
                 '}';
     }
 
-    public Integer getEmpNo() {
-        return empNo;
+    public SalaryPk getPk() {
+        return pk;
     }
 
-    public void setEmpNo(Integer empNo) {
-        this.empNo = empNo;
-    }
-
-    public Date getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
+    public void setPk(SalaryPk pk) {
+        this.pk = pk;
     }
 
     public Integer getSalary() {
